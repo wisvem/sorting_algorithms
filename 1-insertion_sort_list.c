@@ -7,22 +7,19 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current, *next, *track;
-	int i = 1;
-	current = *list;
-	next = (*current).next;
 
+	if (list == NULL)
+		return;
+	current = *list, next = (*current).next;
 	while (next != NULL)
 	{
 		current = (*next).prev;
 		track = (*next).next;
 		while ((*current).n > (*next).n)
 		{
-			/*Separar nodo*/
 			(*current).next = (*next).next;
 			if ((*next).next != NULL)
-			{
 				(*(*current).next).prev = current;
-			}
 			(*next).next = NULL;
 			(*next).prev = NULL;
 			if ((*current).prev == NULL)
