@@ -3,17 +3,18 @@
 /**
 * insertion_sort_list - insertion sort function
 * @list: list to sort
-**/
+	**/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *next;
-
+	listint_t *current, *next, *track;
+	int i = 1;
 	current = *list;
-
 	next = (*current).next;
 
 	while (next != NULL)
 	{
+		current = (*next).prev;
+		track = (*next).next;
 		while ((*current).n > (*next).n)
 		{
 			/*Separar nodo*/
@@ -43,7 +44,8 @@ void insertion_sort_list(listint_t **list)
 			}
 			print_list(*list);
 		}
-		current = (*current).next;
-		next = (*current).next;
+		next = track;
+		if (next != NULL)
+			current = (*next).prev;
 	}
 }
