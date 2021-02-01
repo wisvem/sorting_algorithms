@@ -8,7 +8,7 @@
 * @o_array: array original pointer
 * Return: always 0
 **/
-int q_sort(int *array, size_t size, int *o_array, size_t o_size)
+void q_sort(int *array, size_t size, int *o_array, size_t o_size)
 {
 	size_t i = 0, j = 0;
 	int x, pv;
@@ -45,7 +45,6 @@ int q_sort(int *array, size_t size, int *o_array, size_t o_size)
 		}
 		q_sort(array + j, size - j, o_array, o_size);
 	}
-	return (0);
 }
 
 /**
