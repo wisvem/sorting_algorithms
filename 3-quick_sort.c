@@ -56,7 +56,7 @@ int q_sort(int *array, size_t size, int *o_array, size_t o_size)
 **/
 void quick_sort(int *array, size_t size)
 {
-	if (size == 0)
+	if (array == NULL)
 		return;
 
 	q_sort(array, size, array, size);
