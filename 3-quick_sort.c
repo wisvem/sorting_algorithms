@@ -32,6 +32,10 @@ void q_sort(int *array, size_t size, int *o_array, size_t o_size)
 			}
 			i++;
 		}
+		if (array[i - 1] == array[j])
+		{
+			j = size - 1;
+		}
 		if (array[j] != array[size - 1])
 		{
 			x = array[j];
@@ -39,8 +43,7 @@ void q_sort(int *array, size_t size, int *o_array, size_t o_size)
 			array[size - 1] = x;
 			print_array(o_array, o_size);
 		}
-
-		if (j > 1)
+		if (j)
 		{
 			q_sort(array, j, o_array, o_size);
 		}
