@@ -12,7 +12,7 @@ void shell_sort(int *array, size_t size)
 
 	if (!size)
 		return;
-	while (h < size)
+	while (h < size / 3)
 	{
 		h = 3 * h + 1;
 	}
@@ -29,7 +29,7 @@ void shell_sort(int *array, size_t size)
 				sw = 1;
 			}
 		}
-		h = h / 3;
+		h = (h - 1) / 3;
 		if (sw == 1)
 			print_array(array, size);
 	}
