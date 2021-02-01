@@ -39,7 +39,7 @@ void q_sort(int *array, size_t size, int *o_array, size_t o_size)
 			array[size - 1] = x;
 			print_array(o_array, o_size);
 		}
-		if (j)
+		if (j > 0)
 		{
 			q_sort(array, j, o_array, o_size);
 		}
