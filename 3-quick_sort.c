@@ -12,7 +12,7 @@ int q_sort(int *array, size_t size, int *o_array, size_t o_size)
 {
 	size_t i = 0, j = 0;
 	int x, pv;
-	
+
 	if (size > 1)
 	{
 		pv = array[size - 1];
@@ -56,6 +56,8 @@ int q_sort(int *array, size_t size, int *o_array, size_t o_size)
 **/
 void quick_sort(int *array, size_t size)
 {
-	if (size)
-		q_sort(array, size, array, size);
+	if (!size)
+		return;
+
+	q_sort(array, size, array, size);
 }
