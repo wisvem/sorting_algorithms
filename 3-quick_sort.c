@@ -1,16 +1,18 @@
 #include "sort.h"
+
 /**
-* quick_sort - quick sort algorithm
+* q_sort - quick sort algorithm
 * @array: array to sort
 * @size: array size
+* @o_size: array original size
+* @o_array: array original pointer
+* Return: always 0
 **/
-void quick_sort(int *array, size_t size)
+int q_sort(int *array, size_t size, int *o_array, size_t o_size)
 {
 	size_t i = 0, j = 0;
 	int x, pv;
 
-	if (mySize == 0)
-		mySize = size;
 	if (size > 1)
 	{
 		pv = array[size - 1];
@@ -19,22 +21,40 @@ void quick_sort(int *array, size_t size)
 		{
 			if (array[i] < pv)
 			{
-				x = array[i];
-				array[i] = array[j];
-				array[j] = x;
+				if (array[j] != array[i])
+				{
+					x = array[i];
+					array[i] = array[j];
+					array[j] = x;
+					print_array(o_array, o_size);
+				}
 				j++;
 			}
 			i++;
 		}
-		x = array[j];
-		array[j] = array[size - 1];
-		array[size - 1] = x;
-		
-		quick_sort(array + j, size - j);
+		if (array[j] != array[size - 1])
+		{
+			x = array[j];
+			array[j] = array[size - 1];
+			array[size - 1] = x;
+			print_array(o_array, o_size);
+		}
+
+		q_sort(array + j, size - j, o_array, o_size);
 		if (j)
 		{
-			quick_sort(array, j);
-			print_array(array + j, mySize);
+			q_sort(array, j, o_array, o_size);
 		}
 	}
+	return (0);
+}
+
+/**
+* quick_sort - quick sort algorithm
+* @array: array to sort
+* @size: array size
+**/
+void quick_sort(int *array, size_t size)
+{
+	q_sort(array, size, array, size);
 }
