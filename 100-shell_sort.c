@@ -1,6 +1,5 @@
 #include "sort.h"
 
-
 /**
 * shell_sort - shell sort algorithm
 * @array: array to sort
@@ -11,6 +10,8 @@ void shell_sort(int *array, size_t size)
 	size_t h = 1, i, n;
 	int number;
 
+	if (!size)
+		return;
 	while (h < size / 3)
 	{
 		h = 3 * h + 1;
