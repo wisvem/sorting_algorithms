@@ -10,6 +10,8 @@ void selection_sort(int *array, size_t size)
 	size_t i = 0, j, pos;
 	int x, sw = 0;
 
+	if (!size)
+		return;
 	while (i < size - 1)
 	{
 		x = array[i];
