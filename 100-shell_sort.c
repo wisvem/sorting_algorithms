@@ -21,13 +21,13 @@ void shell_sort(int *array, size_t size)
 		sw = 0;
 		for (i = h; i < size; i++)
 		{
-			for (n = i; n > 0 && array[n] < array[n - h]; n -= h)
+			number = array[i];
+			for (n = i; n > h - 1 && array[n - h] > number; n = n - h)
 			{
-				number = array[n];
 				array[n] = array[n - h];
-				array[n - h] = number;
 				sw = 1;
 			}
+			array[n] = number;
 		}
 		h = (h - 1) / 3;
 		if (sw == 1)
