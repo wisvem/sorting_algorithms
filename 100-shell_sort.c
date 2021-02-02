@@ -10,7 +10,7 @@ void shell_sort(int *array, size_t size)
 	size_t h = 1, i, n;
 	int number, sw;
 
-	if (!size)
+	if (!size || !array)
 		return;
 	while (h < size / 3)
 	{
