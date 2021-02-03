@@ -8,27 +8,25 @@
 * @high: last position subarray
 * Return: partition position
 **/
-int partition(int *array, size_t low, size_t high, size_t size)
+int partition(int *array, int low, int high, size_t size)
 {
-	int pivot = array[low];
-	int i = low - 1;
-	int j = high + 1;
+	int pivot = array[high];
+	int i = low;
+	int j = high;
 
 	/*printf("j: %i pivot: %i array[j]%i\n", j, pivot, array[high]);*/
 	while (1)
 	{
-		do
-			i++;
-		while (array[i] < pivot);
 
-		do
+		while (array[i] < pivot)
+			i++;
+
+		while (array[j] > pivot)
 			j--;
-		while (array[j] > pivot);
 
 		if (i >= j)
 		{
-
-			return (j);
+			return (i);
 		}
 		if (array[i] != array[j])
 		{
@@ -37,9 +35,11 @@ int partition(int *array, size_t low, size_t high, size_t size)
 			array[i] = array[i] - array[j];
 			print_array(array, size);
 		}
+		i++;
+		j--;
 	}
 }
-/*   4  1  2  3          3 */
+
 /**
 * qsorth - quick sort hoare
 * @array: array to sort
@@ -48,7 +48,7 @@ int partition(int *array, size_t low, size_t high, size_t size)
 * @high: last position subarray
 * Return: partition position
 **/
-void qsorth(int *array, size_t low, size_t high, size_t size)
+void qsorth(int *array, int low, int high, size_t size)
 {
 	int pivot_position;
 	/* base condition */
@@ -60,10 +60,10 @@ void qsorth(int *array, size_t low, size_t high, size_t size)
 
 		/* recursion left to pivot*/
 		/*	if (pivot_position) */
-		qsorth(array, low, pivot_position, size);
+		qsorth(array, low, pivot_position - 1, size);
 
 		/* recursion right to pivot */
-		qsorth(array, pivot_position + 1, high, size);
+		qsorth(array, pivot_position, high, size);
 	}
 }
 
