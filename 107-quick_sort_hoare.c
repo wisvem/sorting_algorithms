@@ -28,13 +28,12 @@ int partition(int *array, int low, int high, size_t size)
 		{
 			return (i);
 		}
-		if (array[i] != array[j])
-		{
-			array[i] = array[i] + array[j];
-			array[j] = array[i] - array[j];
-			array[i] = array[i] - array[j];
-			print_array(array, size);
-		}
+
+		array[i] = array[i] + array[j];
+		array[j] = array[i] - array[j];
+		array[i] = array[i] - array[j];
+		print_array(array, size);
+
 		i++;
 		j--;
 	}
