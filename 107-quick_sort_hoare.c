@@ -22,6 +22,9 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 		while (array[j] > pivot)
 			j--;
 
+		if (i >= j)
+			return (j);
+
 		if (array[i] != array[j])
 		{
 			array[i] = array[i] + array[j];
@@ -30,8 +33,6 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 
 			print_array(array, size);
 		}
-		if (i >= j)
-			return (j);
 		i++;
 		j--;
 	}
