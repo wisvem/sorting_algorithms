@@ -65,5 +65,7 @@ void qsorth(int *array, size_t low, size_t high, size_t size)
 **/
 void quick_sort_hoare(int *array, size_t size)
 {
+	if (size == 0 || array == NULL)
+		return;
 	qsorth(array, 0, size - 1, size);
 }
