@@ -74,7 +74,7 @@ void qsorth(int *array, int low, int high, size_t size)
 **/
 void quick_sort_hoare(int *array, size_t size)
 {
-	if (size == 0 || array == NULL)
+	if (size < 2 || array == NULL)
 		return;
 	qsorth(array, 0, size - 1, size);
 }
