@@ -25,12 +25,14 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 		if (i >= j)
 			return (j);
 
-		array[i] = array[i] + array[j];
-		array[j] = array[i] - array[j];
-		array[i] = array[i] - array[j];
+		if (array[i] != array[j])
+		{
+			array[i] = array[i] + array[j];
+			array[j] = array[i] - array[j];
+			array[i] = array[i] - array[j];
 
-		print_array(array, size);
-
+			print_array(array, size);
+		}
 		i++;
 		j--;
 	}
