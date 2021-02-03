@@ -1,39 +1,69 @@
 #include "sort.h"
 
-size_t part(int *array, size_t l, size_t h)
+/**
+* partition - hoare partiton scheme
+* @array: array to sort
+* @size: array size
+* @low: first position subarray
+* @high: last position subarray
+* Return: partition position
+**/
+size_t partition(int *array, size_t low, size_t high, size_t size)
 {
-	size_t i = l - 1, j = h + 1;
-	int x, pv;
+	int pivot = array[high - 1];
+	int i = low - 1;
+	int j = high + 1;
 
-	pv = array[h];
-
-	pv = array[h - 1];
-	do
-		i++;
-	while (array[i] < pv);
-	do
-		j--;
-	while (array[j] > pv);
-	if (i <= j)
-		return (j);
-	x = array[i];
-	array[i] = array[j];
-	array[j] = x;
-}
-
-void q_sort(int *array, size_t l, size_t h)
-{
-	size_t p = 0;
-
-	if (l < h)
+	while (1)
 	{
-		p = part(array, l, h);
-		printf("%lu\n", p);
-		q_sort(array, l, p);
-		q_sort(array, p + 1, h);
+		do
+			i++;
+		while (array[i] < pivot);
+
+		do
+			j--;
+		while (array[j] > pivot);
+
+		if (i >= j)
+			return (j);
+		array[i] = array[i] + array[j];
+		array[j] = array[i] - array[j];
+		array[i] = array[i] - array[j];
+		print_array(array, size);
 	}
 }
+
+/**
+* qsorth - quick sort hoare
+* @array: array to sort
+* @size: array size
+* @low: first position subarray
+* @high: last position subarray
+* Return: partition position
+**/
+void qsorth(int *array, size_t low, size_t high, size_t size)
+{
+	int pivot;
+	/* base condition */
+	if (low >= high)
+		return;
+
+	/* rearrange the elements across pivot */
+	pivot = partition(array, low, high, size);
+
+	/* recursion left to pivot*/
+	qsorth(array, low, pivot, size);
+
+	/* recursion right to pivot */
+	qsorth(array, pivot + 1, high, size);
+}
+
+/**
+* quick_sort_hoare - quick sort algorithm
+* @array: array to sort
+* @size: array size
+**/
 void quick_sort_hoare(int *array, size_t size)
 {
-	q_sort(array, 0, size);
+	qsorth(array, 0, size - 1, size);
 }
