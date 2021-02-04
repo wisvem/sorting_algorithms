@@ -6,7 +6,7 @@
 *  @list: - Popinter to the list of nodes.
 *  Return:  1, Always.
 **/
-void swp_fwd(listint_t *current, listint_t **list)
+int swp_fwd(listint_t *current, listint_t **list)
 {
 	listint_t *moving = NULL;
 
